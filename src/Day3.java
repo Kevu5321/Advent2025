@@ -19,43 +19,25 @@ public class Day3 {
 
     // COMPLETE THIS METHOD!
     public static int getLargestCombination(String batteries) {
-        System.out.println(batteries);
-        System.out.println(batteries.length());
-
-        String joltage = "";
+        int largestCombo = 0;
 
         for (int i = 0; i < batteries.length(); i++) {
-            int currentNum = batteries.charAt(i);
+            String firstNum = String.valueOf(batteries.charAt(i));
 
-            if (joltage.length() < 3) {
-                if (currentNum == 9) {
-                    joltage = joltage + "9";
-                } if (currentNum == 8) {
-                    joltage = joltage + "8";
-                } if (currentNum == 7) {
-                    joltage = joltage + "7";
-                } if (currentNum == 6) {
-                    joltage = joltage + "6";
-                } if (currentNum == 5) {
-                    joltage = joltage + "5";
-                } if (currentNum == 4) {
-                    joltage = joltage + "4";
-                } if (currentNum == 3) {
-                    joltage = joltage + "3";
-                } if (currentNum == 2) {
-                    joltage = joltage + "2";
-                } if (currentNum == 1) {
-                    joltage = joltage + "1";
-                } else {
-                    joltage = joltage + "0";
+            for (int j = i + 1; j < batteries.length(); j++) {
+                String secondNum = String.valueOf(batteries.charAt(j));
+
+                String joltage = firstNum + secondNum;
+                int joltageNum = Integer.parseInt(joltage);
+
+                if (joltageNum > largestCombo) {
+                    largestCombo = joltageNum;
                 }
             }
         }
-        int output = Integer.parseInt(joltage);
 
-        return output;
+        return largestCombo;
     }
-
 
     public static ArrayList<String> getFileData(String fileName) {
         ArrayList<String> fileData = new ArrayList<String>();
@@ -74,41 +56,3 @@ public class Day3 {
         }
     }
 }
-
-
-////Code that I wrote but doesn't really make sense
-//public static int getLargestCombination(String batteries) {
-//    String joltage = "";
-//
-//    for (int i = 0; i < batteries.length(); i++) {
-//        int currentNum = batteries.charAt(i);
-//
-//        if (joltage.length() < 3) {
-//            if (currentNum == 9) {
-//                joltage = joltage + "9";
-//            } if (currentNum == 8) {
-//                joltage = joltage + "8";
-//            } if (currentNum == 7) {
-//                joltage = joltage + "7";
-//            } if (currentNum == 6) {
-//                joltage = joltage + "6";
-//            } if (currentNum == 5) {
-//                joltage = joltage + "5";
-//            } if (currentNum == 4) {
-//                joltage = joltage + "4";
-//            } if (currentNum == 3) {
-//                joltage = joltage + "3";
-//            } if (currentNum == 2) {
-//                joltage = joltage + "2";
-//            } if (currentNum == 1) {
-//                joltage = joltage + "1";
-//            } else {
-//                joltage = joltage + "0";
-//            }
-//        }
-//    }
-//    int output = Integer.parseInt(joltage);
-//
-//    return output;
-//}
-
